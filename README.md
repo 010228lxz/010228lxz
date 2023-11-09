@@ -3,8 +3,8 @@
 ## About Me
 I'm a computer science student at the University of Birmingham, passionate about software development and gaming. Here's a quick overview of my skills and interests:
 
-- **Languages:** Java, JavaScript, Python, C, C#, HTML, Swift
-- **Frameworks:** Electron, Bootstrap, React
+- **Languages:** Java, JavaScript, Python, C, C#, Haskell, HTML, Swift
+- **Frameworks:** React, Electron, Bootstrap
 - **Game Development:** Unity (including VR)
 
 ## Projects
