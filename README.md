@@ -1,26 +1,67 @@
 # Welcome to 010228lxz’s GitHub Repository 👋
 
 ## 👨‍💻 About Me  
-I'm a Computer Science student at the **University of Birmingham** with a strong passion for software development, game design, data analysis, and quantitative trading solutions. I enjoy turning ideas into impactful projects through code and creativity.
+I'm a Computer Science graduate from the **University of Birmingham** and currently working as a **FinTech Software Engineer** specializing in trading systems development.  
 
-### 🛠️ Technical Skills
-- **Languages:** Java, JavaScript, TypeScript, Python, C, C++, C#, Haskell, Swift  
-- **Frameworks & Libraries:** React, Next.js, Flutter, Electron, Bootstrap  
-- **Data Analysis & Machine Learning:** Pandas, NumPy, PyTorch, Scikit-learn, Matplotlib  
-- **Game Development Tools:** Unity (including VR), Unreal Engine, Blender
+I’m passionate about building high-performance systems, developing algorithmic trading solutions, and creating impactful software across domains like finance, data science, and interactive applications.
 
-## 🚀 Projects
-I enjoy working on a wide range of projects, including:
-- Creative software tools  
-- Quantitative trading and algorithmic strategies  
-- Data analysis and predictive modeling
-- Indie games and interactive media  
+---
 
-## 🔍 Current Focus
-I'm currently exploring indie project ideas, deepening my skills in data analysis and machine learning, and expanding my capabilities in game development and automation. Exciting times ahead!
+## 🛠️ Technical Skills  
 
-## 📫 Contact
-I'm always open to collaboration, feedback, or a friendly chat. Feel free to reach out:
+### 💻 Languages  
+Java, Python, C++, C#, TypeScript, JavaScript, C, Haskell, Swift  
+
+### ⚙️ Frameworks & Tools  
+React, Next.js, Flutter, Electron, Bootstrap  
+
+### 📊 Data & Machine Learning  
+Pandas, NumPy, PyTorch, Scikit-learn, Matplotlib  
+
+### 🎮 Game Development  
+Unity (including VR), Unreal Engine, Blender  
+
+### 💹 FinTech & Trading Systems  
+- Low-latency system design  
+- Market data processing  
+- Order execution systems  
+- API integration (REST, WebSocket)  
+- Backtesting & strategy simulation  
+- Automation and monitoring tools  
+
+---
+
+## 🚀 Projects  
+I enjoy working on a diverse range of projects, including:
+
+- 📈 **Quantitative Trading Systems**  
+  Algorithmic strategies, backtesting frameworks, and execution engines  
+
+- 🧠 **Data Analysis & Machine Learning**  
+  Predictive models, financial data analysis, and visualization  
+
+- 🛠️ **Creative Software Tools**  
+  Productivity tools, automation systems, and experimental applications  
+
+- 🎮 **Indie Games & Interactive Media**  
+  Game development using Unity and Unreal Engine  
+
+---
+
+## 🔍 Current Focus  
+- Building and optimizing **trading system infrastructure**  
+- Exploring **quantitative strategies & financial modeling**  
+- Advancing skills in **machine learning for finance**  
+- Developing **automation tools for trading workflows**  
+
+---
+
+## 📫 Contact  
+I'm always open to collaboration, discussions, or opportunities in software engineering and fintech.
 
 - 📧 Email: [010228lxz@gmail.com](mailto:010228lxz@gmail.com)  
 - 💼 LinkedIn: [Xin Zhe Lee](https://www.linkedin.com/in/xin-zhe-lee-2a95ba187)
+
+---
+
+⭐️ *Feel free to explore my repositories and reach out if you'd like to collaborate!*
