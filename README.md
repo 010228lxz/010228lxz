@@ -5,7 +5,8 @@
 I build **quantitative trading systems** and **developer tooling** — event-driven trading bots, backtest engines, risk-gated execution pipelines, and the CLI/DevOps infrastructure that keeps them running. I care about production discipline: staged rollouts, hard safety invariants, and test suites that actually get run.
 
 - 🔭 Currently: production-grade **Polymarket & Hyperliquid trading bots** running a paper-soak → canary → live rollout pipeline
-- 🧰 Day-to-day stack: **Python (async)** · Bash/shell · Kafka · PostgreSQL · Redis · Docker · pytest · ruff/mypy
+- 🧰 Work stack: **Java (J2EE)** · Tomcat · IBM MQ / ActiveMQ · Oracle SQL · Linux (RHEL) · Shell
+- 🧰 Side-project stack: **Python (async)** · Bash · Kafka · PostgreSQL · Redis · Docker · pytest · ruff/mypy
 
 ---
 
@@ -78,10 +79,21 @@ Two-part study: (a) backtesting 14 classical candlestick patterns (TA-Lib) again
 ## 🛠️ Technical Skills
 
 ### 💻 Languages
-Python, Bash/shell, Java, C++, C#, TypeScript, JavaScript, C, Haskell, Swift
+Java *&nbsp;(J2EE/Jakarta EE)*, C++, Python (async), Shell/Bash, Oracle SQL, C#, TypeScript, JavaScript, C, Haskell, Swift
 
-### ⚙️ Frameworks & Tools
-FastAPI, aiohttp, React, Next.js, Flutter, Electron, Docker, Kafka, PostgreSQL, Redis
+### 🏢 Enterprise Middleware & Backend
+- **J2EE application servers** — Apache Tomcat, WAR deployment, servlet/JSP lifecycles
+- **Message-oriented middleware** — IBM MQ, Apache ActiveMQ (queuing, topics, admin tooling)
+- **Web infrastructure** — Apache HTTP Server (virtual hosts, modules, reverse proxying)
+- **Enterprise databases** — Oracle SQL (complex queries, performance tuning)
+
+### 🐧 Systems & Infrastructure
+- **Linux (RHEL)** — production administration, systemd services, networking, logs/troubleshooting
+- Shell scripting (Bash/POSIX), cron automation
+- Docker, Kafka (KRaft clusters), PostgreSQL, Redis
+
+### 🎨 Frontend & Cross-platform
+FastAPI, aiohttp, React, Next.js, Flutter, Electron
 
 ### 📊 Data & Machine Learning
 Pandas, NumPy, PyTorch, XGBoost, TensorFlow/Keras, Scikit-learn, SHAP, Optuna, Matplotlib
