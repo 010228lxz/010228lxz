@@ -1,121 +1,109 @@
-# Hi, I'm Xin Zhe Lee (010228lxz) 👋
+# Hi, I'm Xin Zhe Lee 👋
 
-**Computer Science graduate, University of Birmingham** · **FinTech Software Engineer** specializing in **trading systems development**
+**Computer Science graduate from the University of Birmingham** · **FinTech Software Engineer** · **Trading Systems Developer**
 
-I build **quantitative trading systems** and **developer tooling** — event-driven trading bots, backtest engines, risk-gated execution pipelines, and the CLI/DevOps infrastructure that keeps them running. I care about production discipline: staged rollouts, hard safety invariants, and test suites that actually get run.
+I build **event-driven trading systems, quantitative research infrastructure, and developer tooling**.
 
-- 🔭 Currently: production-grade **Polymarket & Hyperliquid trading bots** running a paper-soak → canary → live rollout pipeline
-- 🧰 Work stack: **Java (J2EE)** · Tomcat · IBM MQ / ActiveMQ · Oracle SQL · Linux (RHEL) · Shell
-- 🧰 Side-project stack: **Python (async)** · Bash · Kafka · PostgreSQL · Redis · Docker · pytest · ruff/mypy
+My professional experience spans **Order Management Systems (OMS), FIX Protocol, Java/J2EE, IBM MQ, ActiveMQ, Kafka, Oracle SQL, Linux, and distributed messaging systems**, with a focus on trading workflows, order lifecycle management, execution flows, and enterprise financial infrastructure.
 
----
+Outside of work, I build systems for **quantitative trading, market-data processing, execution, backtesting, risk management, and automation** using Python and modern infrastructure tooling.
 
-## 🎯 How I Build Trading Systems
-
-My trading projects share one architecture — **venue-agnostic, ports-and-adapters design** with safety-first rollout:
-
-```
-Market Data ──▶ Signal Ensemble ──▶ Risk Gates ──▶ Execution ──▶ Reconciliation ──▶ PnL/State
-   (L2 book,      (trend / momentum /    (EV gating,      (paper sim /      (fills, positions,
-   funding, WS)    mean-reversion /      Kelly sizing,     live CLOB)        mark-to-market,
-                   funding-carry)        drawdown stops)                      persistence)
-```
-
-**Principles I follow across every trading project:**
-
-- 🛡️ **Never trust untested code with real capital** — every bot runs a staged rollout: `Shadow → Paper → Canary → Live`
-- 📊 **Signal ensembles, not single strategies** — Bayesian-weighted combinations of trend, momentum, mean-reversion, and funding-carry signals
-- ⚖️ **Risk gates before execution** — EV filtering, fractional Kelly position sizing, leverage caps, drawdown stops
-- 🧪 **Test everything** — unit, integration, kill-switch drills, live rehearsal, and soak tests
-- 🔌 **Venue-agnostic core** — swap venues (Polymarket ↔ Hyperliquid ↔ IBKR) without rewriting the strategy layer
+I care about building software that is **observable, testable, failure-aware, and safe to operate in production**.
 
 ---
 
 ## 🚀 Featured Projects
 
-### 📈 Trading Systems
+### 📈 Trading & Market Infrastructure
 
-**Polymarket BTC 5-Minute Trading Bot** *(private — walkthrough & code available on request)*
-Production-grade async trading bot for Polymarket BTC 5-minute up/down prediction markets. The most mature system in my portfolio.
-- 0.5s event loop: market discovery → feature computation → ensemble signal → risk gate → execution → reconciliation → PostgreSQL persistence
-- Redis-based leader election, FastAPI web monitor + rich TUI, Alembic migrations, on-chain CLOB signing (eth-account)
-- ~10–15K LOC, ~70 source modules, **36 test files** including kill-switch drills and soak tests
-- Won a 15-day A/B paper comparison with v2 signal-calibration weights; currently in pre-production paper soak
+**Polymarket BTC 5-Minute Trading Bot** · *Private*
+Production-oriented async trading system for Polymarket BTC 5-minute prediction markets.
 
-**Hyperliquid Perpetuals Bot** *(private — walkthrough & code available on request)*
-Venue-agnostic crypto trading bot targeting Hyperliquid perpetuals, built on a ports-and-adapters architecture.
-- Real L2 book + funding data → multi-signal ensemble → risk gates → simulated VWAP execution → mark-to-market PnL
-- Full event-driven **backtest subsystem**: cross-sectional, microstructure, leverage, and funding-carry studies
-- 9 console entry points (`hl-bot`, `hl-backtest`, `hl-ws-record`, …), 23 test files, ruff + mypy enforced
+The system runs a ~0.5s event loop covering **market discovery → feature computation → signal generation → risk gating → execution → reconciliation → persistence**. It includes Redis-based leader election, FastAPI monitoring, a rich TUI, PostgreSQL, Alembic migrations, and on-chain CLOB signing.
 
-**Kafka Trading Simulation** *(private — walkthrough & code available on request)*
-Event-driven trading simulator on a **3-broker Kafka (KRaft) cluster** — teaching both Kafka internals and trading architecture.
-- 7 microservices: market data → orders → risk → execution → positions → PnL → audit
-- Docker Compose with RF=3, min ISR=2, acks=all; guided experiments for **offset replay / event-sourcing** and **broker failover**
+~10–15K LOC across ~70 modules, with **36 test files** covering unit/integration testing, kill-switch drills, and soak testing. Currently undergoing a pre-production paper-trading soak.
 
-**Quant System v2 (nautilus_trader)** *(private — walkthrough & code available on request)*
-Rebuild of my personal quant trading system on nautilus_trader, targeting IBKR paper trading first. Strict mypy + ruff + pre-commit, with hard safety invariants (`PAPER`/`DRY_RUN` default true, no auto-promotion to live).
+**Hyperliquid Perpetuals Bot** · *Private*
+Venue-agnostic crypto trading system built around a **ports-and-adapters architecture**. It processes real L2 order-book and funding data through a multi-signal strategy and risk layer before simulated VWAP execution and mark-to-market PnL.
 
-### 🛠️ Developer Tooling (open source)
+Includes an event-driven **backtesting subsystem** for microstructure, cross-sectional, leverage, and funding-carry research, with strict `ruff` and `mypy` enforcement.
 
-**[xzSSH](https://github.com/010228lxz/xzSSH)** — Modern interactive **SSH configuration manager** for OpenSSH
-- Keyboard-first TUI dashboard with fuzzy search; JSON config deterministically compiled to `~/.ssh/config`
-- Tunnels, file transfers, key lifecycle, sync/drift detection, at-rest encryption (gpg/age)
-- ~55 source modules, **36 test files**, zsh completions, standalone binaries via GitHub Releases
+**Kafka Trading Simulation** · *Private*
+Event-driven trading simulator built on a **3-broker Kafka KRaft cluster**, modelling market data, orders, risk, execution, positions, PnL, and audit as independent services.
 
-**[vpncli](https://github.com/010228lxz/vpncli)** — Self-supervising **VPN tunnel manager** (`vpnctl`)
-- POSIX shell CLI/daemon managing openfortivpn/OpenVPN tunnels with auto-reconnect on drop or half-open states
-- Security-focused: OS keychain password storage, per-backend TOTP auto-generation, validated sudo rules, root-owned helper
-- ~2.5K lines of shell, bats + ShellCheck test suite, CI (ShellCheck + bats on Linux/macOS)
-- 📦 Distributed via **Homebrew tap**
+The environment uses **RF=3, min ISR=2, and `acks=all`**, with experiments around event sourcing, offset replay, and broker failure.
 
-### 🎓 Academic
+**Quant System v2** · *Private*
+A rebuild of my personal quantitative trading infrastructure using **nautilus_trader**, initially targeting IBKR paper trading.
 
-**Final Year Project — Candlestick Patterns & ML Price Prediction** *(University of Birmingham)*
-Two-part study: (a) backtesting 14 classical candlestick patterns (TA-Lib) against random baselines across S&P 500 / FTSE / Bursa Malaysia; (b) ML price-direction prediction with Optuna-tuned XGBoost (SHAP explainability, SMOTE-Tomek resampling) and bidirectional LSTM (focal loss), combined via a meta-model.
+Designed around strict type checking, automated quality gates, and explicit safety invariants, with `PAPER` and `DRY_RUN` enabled by default and no automatic promotion to live trading.
+
+---
+
+### 🛠️ Developer Tooling
+
+**[xzSSH](https://github.com/010228lxz/xzSSH)**
+A modern interactive **SSH configuration manager for OpenSSH**.
+
+Provides a keyboard-first TUI, fuzzy search, deterministic SSH config generation, tunnels, file transfers, key lifecycle management, configuration synchronisation, and encrypted credential storage. Includes **36 test files**, shell completions, CI, and standalone GitHub Releases.
+
+**[vpncli](https://github.com/010228lxz/vpncli)**
+A self-supervising **VPN tunnel manager** for OpenFortiVPN and OpenVPN.
+
+It handles automatic reconnection, half-open tunnel detection, OS keychain credentials, TOTP generation, validated sudo rules, and a root-owned helper. Distributed through a **Homebrew tap** with ShellCheck and Bats testing.
+
+---
+
+## 💼 Professional Experience
+
+As a **FinTech Software Engineer**, I work on enterprise trading infrastructure involving **OMS, FIX, Java/J2EE, IBM MQ, ActiveMQ, Oracle SQL, Linux, and distributed messaging**.
+
+My work involves understanding and troubleshooting the full path from **order lifecycle and messaging through execution and downstream processing**, including production support and system-level diagnostics.
 
 ---
 
 ## 🛠️ Technical Skills
 
-### 💻 Languages
-Java *&nbsp;(J2EE/Jakarta EE)*, C++, Python (async), Shell/Bash, Oracle SQL, C#, TypeScript, JavaScript, C, Haskell, Swift
+**Languages**
+Java · Python · C++ · Shell/Bash · Oracle SQL · JavaScript
 
-### 🏢 Enterprise Middleware & Backend
-- **J2EE application servers** — Apache Tomcat, WAR deployment, servlet/JSP lifecycles
-- **Message-oriented middleware** — IBM MQ, Apache ActiveMQ (queuing, topics, admin tooling)
-- **Web infrastructure** — Apache HTTP Server (virtual hosts, modules, reverse proxying)
-- **Enterprise databases** — Oracle SQL (complex queries, performance tuning)
+**Trading & Financial Systems**
+OMS · FIX Protocol · Order Lifecycle · Execution & Reconciliation · Market Data · Risk Controls · Backtesting · Event-Driven Architecture
 
-### 🐧 Systems & Infrastructure
-- **Linux (RHEL)** — production administration, systemd services, networking, logs/troubleshooting
-- Shell scripting (Bash/POSIX), cron automation
-- Docker, Kafka (KRaft clusters), PostgreSQL, Redis
+**Messaging & Infrastructure**
+IBM MQ · Kafka · ActiveMQ · Redis · PostgreSQL · Oracle · Linux · Docker · systemd
 
-### 🎨 Frontend & Cross-platform
-FastAPI, aiohttp, React, Next.js, Flutter, Electron
+**Quant & Machine Learning**
+NumPy · Pandas · PyTorch · XGBoost · scikit-learn · Optuna · SHAP · TensorFlow/Keras
 
-### 📊 Data & Machine Learning
-Pandas, NumPy, PyTorch, XGBoost, TensorFlow/Keras, Scikit-learn, SHAP, Optuna, Matplotlib
-
-### 🎮 Game Development
-Unity (including VR), Unreal Engine, Blender
-
-### 💹 FinTech & Trading Systems
-- Low-latency event-driven system design
-- Market data processing (L2 books, WebSocket feeds)
-- Order execution & reconciliation systems
-- Backtesting & strategy simulation (event-driven engines, Monte Carlo)
-- Risk management (EV gating, Kelly sizing, drawdown controls)
-- Staged rollout & monitoring (Shadow → Paper → Canary → Live, Prometheus, OpenTelemetry)
+**Web & Other**
+React · Next.js · Flutter · Electron · Unity · Unreal Engine · Blender
 
 ---
 
-## 📊 GitHub Stats
+## 🎓 Academic
+
+### Final Year Project — Candlestick Patterns & ML Price Prediction
+
+At the **University of Birmingham**, I investigated the predictive value of 14 classical candlestick patterns across the **S&P 500, FTSE, and Bursa Malaysia**, comparing them against random baselines.
+
+The second part developed ML-based price-direction models using **Optuna-tuned XGBoost, SHAP, SMOTE-Tomek, and bidirectional LSTM**, combined through a meta-model.
+
+---
+
+## 🔍 Current Focus
+
+I'm currently focused on **event-driven trading infrastructure, quantitative strategy research, market microstructure, execution systems, and production-grade risk controls**.
+
+I'm particularly interested in the engineering problems around **distributed systems, market data, reliability, observability, and safe deployment of automated trading systems**.
+
+---
+
+## 📊 GitHub
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=010228lxz&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=010228lxz&layout=compact&theme=radical&hide_border=true" alt="Top Languages" height="165"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=010228lxz&show_icons=true&theme=radical&hide_border=true" height="165"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=010228lxz&layout=compact&theme=radical&hide_border=true" height="165"/>
 </p>
 
 <p align="center">
@@ -124,22 +112,13 @@ Unity (including VR), Unreal Engine, Blender
 
 ---
 
-## 🔍 Current Focus
-
-- Building and optimizing **trading system infrastructure**
-- Exploring **quantitative strategies & financial modeling**
-- Advancing skills in **machine learning for finance**
-- Developing **automation tools for trading workflows**
-
----
-
 ## 📫 Contact
 
-I'm always open to collaboration, discussions, or opportunities in software engineering and fintech.
+I'm always open to **interesting engineering discussions, collaboration, and opportunities in software engineering and financial technology**.
 
-- 📧 Email: [010228lxz@gmail.com](mailto:010228lxz@gmail.com)
-- 💼 LinkedIn: [Xin Zhe Lee](https://www.linkedin.com/in/xin-zhe-lee-2a95ba187)
+📧 **[010228lxz@gmail.com](mailto:010228lxz@gmail.com)**
+💼 **[LinkedIn — Xin Zhe Lee](https://www.linkedin.com/in/xin-zhe-lee-2a95ba187)**
 
 ---
 
-⭐️ *Feel free to explore my repositories and reach out if you'd like to collaborate!*
+⭐️ *Thanks for stopping by. Feel free to explore my repositories.*
